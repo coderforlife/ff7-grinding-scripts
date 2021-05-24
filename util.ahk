@@ -66,7 +66,6 @@ hWnd := WinExist()
 DllCall("RegisterShellHookWindow", UInt, Hwnd)
 MsgNum := DllCall("RegisterWindowMessage", Str, "SHELLHOOK")
 OnMessage(MsgNum, "ShellMessage")
-Return
 ShellMessage(nCode, wParam, lParam)
 {
 	If (nCode = 0x0004 or nCode = 0x8004) ; HSHELL_WINDOWACTIVATED and HSHELL_RUDEAPPACTIVATED

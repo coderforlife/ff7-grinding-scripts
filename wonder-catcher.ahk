@@ -10,8 +10,8 @@
 
 ; TODO: auto-detect resolution https://autohotkey.com/board/topic/55072-get-window-size-in-pixels/
 
-global RightMachine := False
-global DetectPrize := False
+global RightMachine := True
+global DetectPrize := True
 
 #Include %A_ScriptDir%
 #Include util.ahk
@@ -65,7 +65,8 @@ Loop
 	PressOk(4750)
 
 	; Find out what prize we got
-	if (DetectPrize) {
+	if (DetectPrize)
+	{
 		found := 0
 		tries := 0
 		Loop
@@ -85,7 +86,10 @@ Loop
 			}
 			If found
 				Break
-			If tries > 5 {
+			If Stop
+				Return
+			If (tries > 5)
+			{
 				MsgBox Did not find which prize, please update the images and press Ok
 				tries = 0
 			}
